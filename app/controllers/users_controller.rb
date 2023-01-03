@@ -23,13 +23,13 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to new_user_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
-    
+
   private
 
-  def user_params 
-    params.require(:user).permit(:username,:email,:password)
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
   end
 end
